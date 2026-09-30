@@ -22,6 +22,10 @@ def limpar_texto(texto):
     texto = str(texto or "").replace("\u2011", "-").replace("*", "")
     return re.sub(r" {2,}", " ", texto).strip()
 
+def formatar_data(data_iso):
+    """'2026-09-29' vira '29/09/2026'."""
+    partes = str(data_iso or "").split("-")
+    return "/".join(reversed(partes)) if len(partes) == 3 else str(data_iso or "data não informada")
 
 def formatar_mensagem(vaga):
     a = vaga["avaliacao"]
@@ -38,7 +42,7 @@ def formatar_mensagem(vaga):
         limpar_texto(vaga.get("title")),
         f"🏢 {limpar_texto(vaga.get('companyName'))}",
         f"📍 {limpar_texto(vaga.get('location'))}",
-        f"📅 Publicada em {vaga.get('postedAt')}",
+        f"📅 Publicada em {formatar_data(vaga.get('postedAt'))}",
         f"📊 {motivo}",
         "",
         "📝 Resumo",
