@@ -1,0 +1,46 @@
+name: Robô de vagas
+
+on:
+  schedule:
+    - cron: "0 11 * * *"   # 11:00 UTC = 08:00 em Brasília
+  workflow_dispatch:        # permite rodar na mão, pelo botão "Run workflow"
+
+permissions:
+  contents: write           # para salvar o vagas_vistas.json no repositório
+
+concurrency:
+  group: robo-vagas         # evita duas execuções ao mesmo tempo
+  cancel-in-progress: false
+
+jobs:
+  buscar-vagas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v7
+
+      - name: Instalar o Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar as dependências
+        run: pip install -r requirements.txt
+
+      - name: Rodar o robô
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python main.py
+
+      - name: Salvar as vagas já vistas
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add vagas_vistas.json || true
+          git diff --staged --quiet || (git commit -m "chore: atualiza vagas já vistas" && git push)
