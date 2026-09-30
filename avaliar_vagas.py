@@ -78,11 +78,11 @@ def montar_mensagem(vaga, perfil):
     )
 
 
-def chamar_groq(mensagem, token, instrucoes=INSTRUCOES):
+def chamar_groq(mensagem, token):
     corpo = {
         "model": MODELO_GROQ,
         "messages": [
-            {"role": "system", "content": instrucoes},
+            {"role": "system", "content": INSTRUCOES},
             {"role": "user", "content": mensagem},
         ],
         "temperature": 0.2,
