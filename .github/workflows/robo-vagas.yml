@@ -29,6 +29,14 @@ jobs:
       - name: Instalar as dependências
         run: pip install -r requirements.txt
 
+      - name: Criar o perfil a partir do Secret
+        env:
+          PERFIL_MD: ${{ secrets.PERFIL_MD }}
+        run: |
+          test -n "$PERFIL_MD" || { echo "Secret PERFIL_MD não encontrado"; exit 1; }
+          printf '%s' "$PERFIL_MD" > perfil.md
+          echo "perfil.md criado com $(wc -c < perfil.md) bytes"
+
       - name: Rodar o robô
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
