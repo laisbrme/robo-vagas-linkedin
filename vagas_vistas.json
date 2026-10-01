@@ -112,5 +112,47 @@
     "empresa": "CI&T",
     "nota": 85,
     "data": "2026-10-01"
+  },
+  "4472553112": {
+    "titulo": "Junior Java Developer",
+    "empresa": "Jobgether",
+    "nota": 60,
+    "data": "2026-10-01"
+  },
+  "4445150647": {
+    "titulo": "Software Developer",
+    "empresa": "CSG",
+    "nota": 30,
+    "data": "2026-10-01"
+  },
+  "4472917380": {
+    "titulo": "Pessoa Desenvolvedora Software Júnior",
+    "empresa": "Smartspace",
+    "nota": 10,
+    "data": "2026-10-01"
+  },
+  "4474350463": {
+    "titulo": "Desenvolvedor/Desenvolvedora Servicenow Júnior - SPM/ITBM",
+    "empresa": "Capgemini",
+    "nota": 0,
+    "data": "2026-10-01"
+  },
+  "4472599334": {
+    "titulo": "374460 - BLUMENAU - DESENVOLVEDOR SOFTWARE [Exclusiva PcD]",
+    "empresa": "WEG",
+    "nota": 0,
+    "data": "2026-10-01"
+  },
+  "4462892770": {
+    "titulo": "Engenheiro(a) de Software Junior(Full stack) | IT Accounting Clients & Finance Report",
+    "empresa": "BTG Pactual",
+    "nota": 0,
+    "data": "2026-10-01"
+  },
+  "4444587124": {
+    "titulo": "Junior BackEnd Engineer- - São Paulo",
+    "empresa": "Axonius",
+    "nota": 0,
+    "data": "2026-10-01"
   }
 }
