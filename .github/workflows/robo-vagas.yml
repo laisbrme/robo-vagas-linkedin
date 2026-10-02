@@ -2,7 +2,7 @@ name: Robô de vagas
 
 on:
   schedule:
-    - cron: "0 11 * * *"   # 11:00 UTC = 08:00 em Brasília
+    - cron: "0 08 * * *"   # 11:00 UTC = 08:00 em Brasília
   workflow_dispatch:        # permite rodar na mão, pelo botão "Run workflow"
 
 permissions:
