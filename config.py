@@ -23,7 +23,9 @@ TITULO_DEVE_TER = [
 
 # A vaga é descartada se o título tiver QUALQUER uma destas:
 TITULO_NAO_PODE_TER = [
-    # nível acima de júnior
+    # Comentar as linhas que você quer que o robô ignore, por exemplo:
+    #"estágio", "estagio", "intern",
+    #"júnior", "junior", "jr", "trainee",
     "sênior", "senior", "sr", "pleno", "pl", "especialista",
     "lead", "líder", "gerente", "manager", "coordenador",
     "arquiteto", "staff", "principal", "estágio", "estagio",
