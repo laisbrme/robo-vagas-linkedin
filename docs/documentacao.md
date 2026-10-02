@@ -79,12 +79,13 @@ O resultado é limitado entre 0 e 100. Uma vaga júnior, de stack média e local
 | `avaliar_vagas.py` | Chama a Groq, interpreta a resposta e calcula a nota. |
 | `notificar.py` | Monta e envia as mensagens do Telegram. |
 | `config.py` | Buscas, listas de palavras, modelo de IA e nota mínima. Nenhum segredo. |
-| `perfil.md` | Perfil usado pela IA para avaliar as vagas (contém dados pessoais). |
-| `vagas_vistas.json` | Registro de vagas já avaliadas (ID, título, empresa, nota, data). |
+| `perfil.md` | Perfil usado pela IA para avaliar as vagas. **Fica só na máquina local (ignorado pelo Git)**; no GitHub Actions é criado a partir do Secret `PERFIL_MD`. |
+| `perfil.example.md` | Modelo do perfil, com dados fictícios, para quem quiser montar o seu. |
+| `vagas_vistas.json` | Registro de vagas já avaliadas (ID, nota, data). |
 | `requirements.txt` | Dependências: `requests` e `python-dotenv`. |
 | `.github/workflows/robo-vagas.yml` | Agendamento diário no GitHub Actions. |
 
-Arquivos locais ignorados pelo Git: `.env` (chaves), `vagas_teste.json` e `avaliacoes_teste.json` (caches usados ao rodar `filtrar_vagas.py` e `avaliar_vagas.py` isoladamente, para testar sem gastar API).
+Arquivos locais ignorados pelo Git: `.env` (chaves), `perfil.md` (perfil pessoal), `vagas_teste.json` e `avaliacoes_teste.json` (caches usados ao rodar `filtrar_vagas.py` e `avaliar_vagas.py` isoladamente, para testar sem gastar API).
 
 ## 4. Decisões técnicas
 
@@ -127,7 +128,7 @@ Todos os parâmetros ajustáveis estão em `config.py`:
 | `PAUSA_ENTRE_CHAMADAS` | Espera, em segundos, entre uma avaliação e outra. |
 | `NOTA_MINIMA` | Nota mínima (0 a 100) para a vaga ir ao Telegram. |
 
-O arquivo `perfil.md` descreve o perfil da candidata (formação, tecnologias, projetos, preferências de vaga). Quanto mais concreto e verdadeiro, melhor a avaliação. Tudo o que está ali é tratado pela IA como fato.
+O arquivo `perfil.md` (local; o repositório traz o modelo `perfil.example.md`) descreve o perfil da candidata (formação, tecnologias, projetos, preferências de vaga). Quanto mais concreto e verdadeiro, melhor a avaliação. Tudo o que está ali é tratado pela IA como fato.
 
 ## 7. Como rodar
 
@@ -145,6 +146,7 @@ O arquivo `perfil.md` descreve o perfil da candidata (formação, tecnologias, p
 | `TELEGRAM_CHAT_ID` | ID do chat que recebe as mensagens |
 | `GROQ_API_KEY` | Chave da Groq |
 | `APIFY_TOKEN` | Token da Apify |
+| `PERFIL_MD` | Só no GitHub Actions: conteúdo completo do seu `perfil.md` |
 
 ### Localmente
 
@@ -156,7 +158,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Crie um arquivo `.env` (já ignorado pelo Git) com as quatro variáveis acima, um `perfil.md` com o seu perfil e ajuste o `config.py`. Depois:
+Crie um arquivo `.env` (já ignorado pelo Git) com as quatro variáveis acima, copie o `perfil.example.md` para `perfil.md` (também ignorado pelo Git) e preencha com o seu perfil, e ajuste o `config.py`. Depois:
 
 ```bash
 python main.py
@@ -179,11 +181,12 @@ O workflow `.github/workflows/robo-vagas.yml`:
 
 - roda todo dia às **11:00 UTC (8h em Brasília)** e também pode ser disparado na mão (botão *Run workflow*);
 - instala Python 3.12 e as dependências;
-- executa `python main.py` com as quatro variáveis vindas dos **Secrets** do repositório;
+- cria o `perfil.md` a partir do Secret `PERFIL_MD` (o perfil real nunca fica no repositório);
+- executa `python main.py` com as chaves vindas dos **Secrets** do repositório;
 - ao final, faz commit do `vagas_vistas.json` se ele mudou;
 - usa um grupo de concorrência para nunca haver duas execuções ao mesmo tempo.
 
-Para configurar, cadastre os quatro segredos em *Settings > Secrets and variables > Actions*, com os mesmos nomes das variáveis da tabela da seção 7.
+Para configurar, cadastre os cinco segredos em *Settings > Secrets and variables > Actions*: as quatro chaves e o `PERFIL_MD` (com o conteúdo completo do seu `perfil.md`), todos com os mesmos nomes da tabela da seção 7.
 
 Como o robô faz commits no repositório, rode `git pull` antes de enviar alterações feitas localmente.
 
@@ -205,8 +208,8 @@ O limite de resultados por busca (`LIMIT_PER_SOURCE`) é o que mantém o custo d
 - Chaves e tokens ficam em `.env` (local, ignorado pelo Git) e nos Secrets do GitHub. Nunca no código.
 - Os tokens não são passados em URLs (exceto o do Telegram, exigido pela API dele) e as mensagens de erro foram tratadas para não expô-los.
 - O `perfil.md` contém dados pessoais e é enviado à Groq a cada avaliação. Não inclua nele telefone, endereço, documentos ou qualquer dado que você não colocaria num currículo público.
-- **Se o repositório for público:** não publique o `perfil.md` real. Use um `perfil.example.md` de exemplo e forneça o perfil verdadeiro por outro meio (por exemplo, um Secret gravado em arquivo durante a execução do workflow).
-- O `vagas_vistas.json` guarda apenas ID, título, empresa, nota e data de vagas públicas.
+- **O perfil real não fica no repositório.** O `perfil.md` é ignorado pelo Git e chega ao GitHub Actions pelo Secret `PERFIL_MD`; o repositório traz apenas o `perfil.example.md`, com dados fictícios.
+- O `vagas_vistas.json` guarda apenas ID, nota e data. Como os logs do GitHub Actions de um repositório público são públicos, o robô mostra neles só o ID da vaga, e não o título nem a empresa.
 
 ## 11. Limitações e avisos
 
