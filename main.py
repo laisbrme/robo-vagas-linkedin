@@ -9,6 +9,7 @@ from buscar_vagas import buscar_vagas
 from config import NOTA_MINIMA
 from filtrar_vagas import filtrar_vagas
 from notificar import enviar_telegram, formatar_mensagem
+from util import rotulo_vaga
 
 ARQUIVO_VISTAS = Path("vagas_vistas.json")
 
@@ -41,13 +42,11 @@ def main():
         if nota >= NOTA_MINIMA:
             enviar_telegram(formatar_mensagem(vaga))
             enviadas += 1
-            print(f"  enviada [{nota}]: {vaga.get('title')}")
+            print(f"  enviada [{nota}]: {rotulo_vaga(vaga)}")
             time.sleep(1.5)
         else:
-            print(f"  descartada [{nota}]: {vaga.get('title')}")
+            print(f"  descartada [{nota}]: {rotulo_vaga(vaga)}")
         vistas[str(vaga.get("id"))] = {
-            "titulo": vaga.get("title"),
-            "empresa": vaga.get("companyName"),
             "nota": nota,
             "data": date.today().isoformat(),
         }

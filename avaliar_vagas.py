@@ -6,8 +6,8 @@ from pathlib import Path
 
 import requests
 from dotenv import load_dotenv
-
 from config import MAX_CARACTERES_DESCRICAO, MODELO_GROQ, NOTA_MINIMA, PAUSA_ENTRE_CHAMADAS
+from util import rotulo_vaga
 
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 PERFIL = Path("perfil.md")
@@ -131,7 +131,7 @@ def avaliar_vagas(vagas):
 
     avaliadas = []
     for i, vaga in enumerate(vagas, start=1):
-        print(f"[{i}/{len(vagas)}] {vaga.get('title')} | {vaga.get('companyName')}")
+        print(f"[{i}/{len(vagas)}] {rotulo_vaga(vaga)}")
         resultado = None
         for _ in range(2):  # duas tentativas se a IA responder fora do formato
             try:
