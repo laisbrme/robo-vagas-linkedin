@@ -196,7 +196,7 @@ Valores vistos durante a construção (setembro de 2026); podem mudar, confira n
 
 | Serviço | Uso | Custo |
 |---|---|---|
-| Apify | 2 buscas × 10 vagas por dia, cobrança por resultado | cerca de US$ 0,04 por execução, pouco mais de US$ 1 por mês |
+| Apify | 2 buscas × 10 vagas por dia, cobrança por resultado | cerca de US$ 0,04 por execução, pouco mais de US$ 1 por mês, dentro dos US$ 5 de crédito gratuito mensal do plano Free |
 | Groq | Uma chamada por vaga nova que passa no filtro; poucos milhares de tokens cada | Plano gratuito, dentro dos limites por minuto e por dia |
 | GitHub Actions | Cerca de 3 a 6 minutos por execução | Dentro da cota gratuita mensal |
 | Telegram | Mensagens do bot | Gratuito |

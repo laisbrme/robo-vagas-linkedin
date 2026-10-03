@@ -85,7 +85,7 @@ Todas as decisões, o passo a passo e as lições aprendidas estão em **[docs/d
 
 ## Custo
 
-Cerca de US$ 0,04 por execução na Apify (pouco mais de US$ 1 por mês); Groq, Telegram e GitHub Actions em planos gratuitos. Valores vistos em setembro de 2026, confira nos serviços.
+Zero no bolso. A busca na Apify consome cerca de US$ 0,04 por execução (pouco mais de US$ 1 por mês), dentro dos US$ 5 de crédito mensal do plano gratuito; Groq, Telegram e GitHub Actions também usam planos gratuitos. Valores vistos em setembro de 2026, confira nos serviços.
 
 ## Avisos
 
