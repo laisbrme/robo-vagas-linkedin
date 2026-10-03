@@ -53,7 +53,7 @@ Vaga remota de back-end júnior, com foco em APIs REST e bancos relacionais.
 
 ## Como usar
 
-Você precisa de contas gratuitas na **Apify**, na **Groq** e de um **bot do Telegram** (veja os detalhes na [documentação](docs/DOCUMENTACAO.md#7-como-rodar)).
+Você precisa de contas gratuitas na **Apify**, na **Groq** e de um **bot do Telegram** (veja os detalhes na [documentação](docs/documentacao.md#7-como-rodar)).
 
 ```bash
 git clone https://github.com/laisbrme/robo-vagas-linkedin.git
@@ -76,7 +76,7 @@ Para rodar todo dia na nuvem, cadastre os quatro segredos acima mais o `PERFIL_M
 
 ## Documentação
 
-Todas as decisões, o passo a passo e as lições aprendidas estão em **[docs/DOCUMENTACAO.md](docs/DOCUMENTACAO.md)**. Alguns destaques:
+Todas as decisões, o passo a passo e as lições aprendidas estão em **[docs/documentacao.md](docs/documentacao.md)**. Alguns destaques:
 
 - Por que a nota é calculada por código e não pela IA;
 - Por que o robô **não** gera cartas de apresentação automáticas;
