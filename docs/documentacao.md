@@ -34,7 +34,7 @@ Procurar emprego no LinkedIn toma horas por dia: muitas vagas parecem relevantes
 
 ```mermaid
 flowchart TD
-    A["GitHub Actions<br/>todo dia às 8h"] --> B["buscar_vagas.py<br/>Apify faz 2 buscas no LinkedIn"]
+    A["GitHub Actions<br/>uma vez por dia"] --> B["buscar_vagas.py<br/>Apify faz 2 buscas no LinkedIn"]
     B --> C["filtrar_vagas.py<br/>filtro por título e remoção de duplicadas"]
     C --> D{"Vaga já vista?<br/>vagas_vistas.json"}
     D -- sim --> X["Ignora"]
@@ -179,7 +179,7 @@ Para refazer a busca ou a avaliação do zero, apague `vagas_teste.json` ou `ava
 
 O workflow `.github/workflows/robo-vagas.yml`:
 
-- roda todo dia às **11:00 UTC (8h em Brasília)** e também pode ser disparado na mão (botão *Run workflow*);
+- roda todo dia e também pode ser disparado na mão (botão *Run workflow*);
 - instala Python 3.12 e as dependências;
 - cria o `perfil.md` a partir do Secret `PERFIL_MD` (o perfil real nunca fica no repositório);
 - executa `python main.py` com as chaves vindas dos **Secrets** do repositório;

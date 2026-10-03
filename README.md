@@ -18,7 +18,7 @@ Robô que, todo dia de manhã, busca vagas novas no LinkedIn, descarta as que n�
 
 ```mermaid
 flowchart LR
-    A["GitHub Actions<br/>todo dia às 8h"] --> B["Apify<br/>busca no LinkedIn"]
+    A["GitHub Actions<br/>uma vez por dia"] --> B["Apify<br/>busca no LinkedIn"]
     B --> C["Filtro por título<br/>e vagas já vistas"]
     C --> D["Groq<br/>classifica a vaga"]
     D --> E["Código<br/>calcula a nota"]
