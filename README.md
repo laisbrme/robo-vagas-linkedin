@@ -99,3 +99,12 @@ A ideia e o desenho inicial do fluxo vieram de um [vídeo da Rafaella Ballerini]
 ## Licença
 
 [MIT](LICENSE)
+
+## Autora
+
+<a href="https://github.com/laisbrme/robo-vagas-linkedin/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=laisbrme/robo-vagas-linkedin" />
+</a>
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/laisbrme)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lais-brum/)
