@@ -3,8 +3,12 @@
 SEARCH_URLS = [
     # 1) Porto Alegre e região (presencial ou híbrido)
     "https://www.linkedin.com/jobs/search/?f_E=2%2C3&f_T=2490%2C25201%2C24%2C3172%2C848&f_TPR=r86400&geoId=90009578&keywords=desenvolvedor%20junior&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R",
+    "https://www.linkedin.com/jobs/search/?currentJobId=4473025268&f_E=2%2C3&f_T=2490%2C25201%2C24%2C3172%2C848&f_TPR=r86400&geoId=90009578&keywords=analista%20de%20sistemas%20junior&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R",
+    "https://www.linkedin.com/jobs/search/?currentJobId=4473025268&f_E=2%2C3&f_T=2490%2C25201%2C24%2C3172%2C848&f_TPR=r86400&geoId=90009578&keywords=dados%20junior&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R",
     # 2) Brasil todo, somente remotas
     "https://www.linkedin.com/jobs/search/?f_E=2%2C3&f_T=2490%2C25201%2C24%2C3172%2C848&f_TPR=r86400&f_WT=2&geoId=106057199&keywords=desenvolvedor%20junior&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R",
+    "https://www.linkedin.com/jobs/search/?f_E=2%2C3&f_T=2490%2C25201%2C24%2C3172%2C848&f_TPR=r86400&f_WT=2&geoId=106057199&keywords=dados%20junior&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R",
+    "https://www.linkedin.com/jobs/search/?f_E=2%2C3&f_T=2490%2C25201%2C24%2C3172%2C848&f_TPR=r86400&f_WT=2&geoId=106057199&keywords=analista%20de%20sistemas%20junior&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R",
 ]
 
 # Máximo de vagas por URL (controla o custo na Apify)
